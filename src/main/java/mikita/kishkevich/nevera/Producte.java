@@ -65,5 +65,8 @@ public class Producte {
         List<Object> objs = file.retornaFitxerObjecteEnLlista();
         return converteixObjProducte(objs);
     }
+    public void convertirCSVaBinari(){
+
+    }
 
 }
