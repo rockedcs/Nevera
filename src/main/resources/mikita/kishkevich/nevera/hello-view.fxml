@@ -13,7 +13,7 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mikita.kishkevich.nevera.HelloController">
   <tabs>
-    <Tab fx:id="TABEntrada" text="Entrada de producte">
+    <Tab fx:id="TABEntrada" onSelectionChanged="#canviaEntrada" text="Entrada de producte">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -61,7 +61,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab fx:id="TABSortida" text="Sortida de producte">
+    <Tab fx:id="TABSortida" onSelectionChanged="#canviaSortida" text="Sortida de producte">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
