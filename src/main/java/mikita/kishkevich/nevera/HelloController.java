@@ -3,8 +3,6 @@ package mikita.kishkevich.nevera;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.time.LocalDate;
-
 public class HelloController {
     @FXML
     private Tab TABEntrada;
@@ -72,46 +70,6 @@ public class HelloController {
     private DatePicker OUTDPDataCaducitat;
     @FXML
     private Button OUTBTNTreure1;
-
-    public void initialize(){
-        INLBLNomShow.setVisible(false);
-        INLBLPreuShow.setVisible(false);
-        INLBLDescShow.setVisible(false);
-        INLBLDataCaducitatShow.setVisible(false);
-        OUTLBLNomShow.setVisible(false);
-        OUTLBLPreuShow.setVisible(false);
-        OUTLBLDescShow.setVisible(false);
-        OUTLBLDataCaducitatShow.setVisible(false);
-    }
-
-    public void canviaSortida(){
-        INLBLNomShow.setVisible(false);
-        INLBLPreuShow.setVisible(false);
-        INLBLDescShow.setVisible(false);
-        INLBLDataCaducitatShow.setVisible(false);
-    }
-
-    public void canviaEntrada(){
-        OUTLBLNomShow.setVisible(false);
-        OUTLBLPreuShow.setVisible(false);
-        OUTLBLDescShow.setVisible(false);
-        OUTLBLDataCaducitatShow.setVisible(false);
-    }
-
-    public void guardarProducte(){
-        String nom = INTFNom.getText();
-        Double preu = Double.parseDouble(INTFPreu.getText());
-        String desc = INTADesc.getText();
-        LocalDate dataCaducitat = INDPDataCaducitat.getValue();
-        INLBLNomShow.setText(INTFNom.getText());
-        INLBLPreuShow.setText(INTFPreu.getText());
-        INLBLDescShow.setText(INTADesc.getText());
-        INLBLDataCaducitatShow.setText(INDPDataCaducitat.getValue().toString());
-        INLBLNomShow.setVisible(true);
-        INLBLPreuShow.setVisible(true);
-        INLBLDescShow.setVisible(true);
-        INLBLDataCaducitatShow.setVisible(true);
-    }
 
 
 
