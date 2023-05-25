@@ -72,9 +72,6 @@ public class Producte {
         List<Object> objs = file.retornaFitxerObjecteEnLlista();
         return converteixObjProducte(objs);
     }
-    public void convertirCSVaBinari(){
-
-    }
 
     public void convertirCSVaBinari() throws IOException {
         String text = file.retornaFitxerTextNIO();
