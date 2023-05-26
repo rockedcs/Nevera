@@ -3,12 +3,13 @@ package mikita.kishkevich.nevera;
 import mikita.kishkevich.Fitxers;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Producte {
+public class Producte implements Serializable {
     //<editor-fold desc="Propietats">
     private int id;
     private String nom;
@@ -56,9 +57,57 @@ public class Producte {
     }
     //</editor-fold>
 
-    public void guardarProducte() throws IOException {
-        file.escriuObjecteFitxer(this,true);
+
+    @Override
+    public String toString() {
+        return "Producte{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", preu=" + preu +
+                ", desc='" + desc + '\'' +
+                ", dataCaducitat=" + dataCaducitat +
+                '}';
     }
+
+    /**
+     *
+     * @throws IOException
+     */
+    public void guardarProducte() throws IOException {
+        guardarProducte(true);
+    }
+
+    /**
+     *
+     * @param afegir
+     * @throws IOException
+     * @see Fitxers
+     */
+    public void guardarProducte(boolean afegir) throws IOException {
+        file.escriuObjecteFitxer(this,afegir);
+    }
+
+    /**
+     *
+     * @param productes
+     * @throws IOException
+     */
+    public void guardarLlistaProductes(List<Producte> productes) throws IOException {
+        for (Producte prod: productes) {
+            if (prod == productes.get(0)){
+                guardarProducte(false);
+            }else{
+                guardarProducte();
+            }
+        }
+    }
+
+    /**
+     * @author mikita.kishkevich
+     * @param objs
+     * @return
+     * @since 1.0
+     */
     public List<Producte> converteixObjProducte(List<Object> objs){
         List<Producte> productes= new ArrayList<>();
         Producte prod = new Producte();
@@ -68,11 +117,22 @@ public class Producte {
         }
         return productes;
     }
+
+    /**
+     *
+     * @return
+     * @see Fitxers
+     */
     public List<Producte> retornarLlistaProductes(){
         List<Object> objs = file.retornaFitxerObjecteEnLlista();
         return converteixObjProducte(objs);
     }
 
+    /**
+     *
+     * @throws IOException
+     * @Deprecated
+     */
     public void convertirCSVaBinari() throws IOException {
         String text = file.retornaFitxerTextNIO();
         String []linies = text.split("\n");
@@ -86,7 +146,8 @@ public class Producte {
             Producte prod = new Producte(nom, preu, desc, dataCaducitat);
             file.escriuObjecteFitxer(prod, true);
         }
-
     }
+
+
 
 }
